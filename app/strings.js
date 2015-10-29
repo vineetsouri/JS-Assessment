@@ -6,7 +6,7 @@ exports.stringsAnswers = {
     var character;
     var inputStrArray = str.split('');
     var charCount = {};
-    for (var i = 0, len = inputStrArray.length; i < len; i++) {
+    for (var i = 0; i < inputStrArray.length; i++) {
       character = inputStrArray[i];
       if (typeof charCount[character] === 'undefined') {
         charCount[character] = 1;

@@ -86,13 +86,41 @@ exports.arraysAnswers = {
 
   duplicates : function(arr) {
     sorted_array = arr.sort();
-    var results = [];
-    for (var i = 0; i < sorted_array.length -1; i++) {
-      if (sorted_array[i + 1] == sorted_array[i]) {
-        results.push(sorted_array[i]);
-      }
+    var len=sorted_array.length,
+    out=[],
+    counts={};
+    for (var i=0;i<len;i++) {
+      var item = arr[i];
+      counts[item] = counts[item] >= 1 ? counts[item] + 1 : 1;
     }
-    return results;
+    for (var item in counts) {
+      if(counts[item] > 1)
+        out.push(item);
+    }
+    //since out results in array with strings it needs to be converted into integers
+    return out.map( function(el){ 
+                      return +el;
+                    }); 
+
+    //**approach 2**//
+    // var results = [];
+    // for (var i = 0; i < sorted_array.length -1; i++) {
+    //   if (sorted_array[i + 1] == sorted_array[i]) {
+    //     results.push(sorted_array[i]);
+    //   }
+    // }
+    // return results;
+
+    //** approach 3**//
+
+    // var unique = [];
+    // for (var i = 0; i < sorted_array.length; i++) {
+    //   var current = sorted_array[i];
+    //   if (unique.indexOf(current) < 0) {
+    //     unique.push(current);
+    //   }
+    // }
+    // return unique;
   },
 
   square : function(arr) {
